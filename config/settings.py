@@ -52,6 +52,7 @@ INSTALLED_APPS = [
 
     # Project-specific
     'users',
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -136,7 +137,7 @@ AUTH_USER_MODEL = 'users.User'
 # Debug toolbar config
 
 
-REGISTRATION_AUTO_LOGIN = TRUE
+REGISTRATION_AUTO_LOGIN = True
 
 SIMPLE_BACKEND_REDIRECT_URL = '/'
 

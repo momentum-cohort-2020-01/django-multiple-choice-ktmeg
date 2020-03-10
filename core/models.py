@@ -3,7 +3,7 @@ from django.db import models
 from django.utils.text import slugify
 from users.models import User
 
-Languages = (
+LANGUAGES = [
 	('CSS', 'CSS'),
 	('HTML', 'HTML'),
 	('JSON', 'JSON'),
@@ -15,27 +15,27 @@ Languages = (
 	('React', 'React'),
 	('Ruby', 'Ruby'),
 	('.Net', '.Net'),
-	('C', 'C')
-	('C#', 'C#')
-)
+	('C', 'C'),
+	('C#', 'C#'),
+]
 
-class Snippet
-	title = models.CharField(max_length=100)
-	description = models.CharField(max_length=250)
-	code = models.TextField(max_length=1000)
-	created_at = models.DateTimeField(auto_now_add=True)
-	updated_at = models.DateTimeField(auto_now=True)
-	language = models.ForeignKey(
-  		'Language', on_delete=models.SET_NULL, null=True, blank=True)
+class Snippet(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=250)
+    code = models.TextField()
+    libraries = models.ManyToManyField('Library')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    language = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True, blank=True)
 	
-	def __str__(self):
-		return f'Snippet title: {self.title} Description: {self.description} Code: {self.code} Language: {self.language}
+    class Meta:
+        ordering = ['-created_at']
 
-	class Meta:
-		ordering = ['-created_at']
+    def __str__(self):
+        return f'Snippet title: {self.title} Description: {self.description} Code: {self.code} Language: {self.language}'
 
 
-class Tag 
+class Tag(models.Model): 
 	# name = models.CharField(max_length=100, choices=Tags )
 	# slug = models.CharField(null=False, unique=True)
 
@@ -46,20 +46,27 @@ class Tag
     #         if not self.slug:
     #             self.slug = slugify(self.name)
     #         return super().save(*args, **kwargs)
+    pass
+
+class Language(models.Model):
+    name = models.CharField(max_length=100, choices=LANGUAGES, default = 'english')
+    slug = models.CharField(max_length=50, null=False, unique=True, default=name)
+
+    def __str__(self):
+        return f'{self.name}'
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        return super().save(*args, **kwargs)
+    
 
 
-class Language 
-    name = models.CharField(max_length=100, choices=Languages )
-	slug = models.CharField(null=False, unique=True)
 
-        def __str__(self):
-            return f'{self.name}'
+class Library(models.Model):
+    name = models.CharField(max_length=50, default='my library')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='libraries')
 
-        def save(self, *args, **kwargs):
-            if not self.slug:
-                self.slug = slugify(self.name)
-            return super().save(*args, **kwargs)
-
-
-
-class Library 
+    def __str__(self):
+        return f'{self.user} {self.name}'
+    

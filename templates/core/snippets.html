@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+  <div class ="snippet-cont">
+    {% for snippet in snippets %}
+    {{snippet.title}}
+    {{snippet.description}}
+    {{snippet.code}}
+    {{snippet.language}}
+  </div>
+
+  {% endfor %}
+</body>
+
+
+{% endblock %}
