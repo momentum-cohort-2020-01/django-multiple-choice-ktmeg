@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Snippet, Tag, Library
+
+admin.sire.register(Snippet)
+admin.site.register(Tag)
+admin.site.register(Library)
