@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.text import slugify
+from users.models import User
 
 Languages = (
 	('CSS', 'CSS'),
@@ -16,8 +17,6 @@ Languages = (
 	('.Net', '.Net'),
 	('C', 'C')
 	('C#', 'C#')
-
-
 )
 
 class Snippet
@@ -29,7 +28,7 @@ class Snippet
 	language = models.ForeignKey(
   		'Language', on_delete=models.SET_NULL, null=True, blank=True)
 	
-	def __str__)self:
+	def __str__(self):
 		return f'Snippet title: {self.title} Description: {self.description} Code: {self.code} Language: {self.language}
 
 	class Meta:
@@ -37,5 +36,30 @@ class Snippet
 
 
 class Tag 
+	# name = models.CharField(max_length=100, choices=Tags )
+	# slug = models.CharField(null=False, unique=True)
+
+    #     def __str__(self):
+    #         return f'{self.name}'
+
+    #     def save(self, *args, **kwargs):
+    #         if not self.slug:
+    #             self.slug = slugify(self.name)
+    #         return super().save(*args, **kwargs)
+
+
+class Language 
+    name = models.CharField(max_length=100, choices=Languages )
+	slug = models.CharField(null=False, unique=True)
+
+        def __str__(self):
+            return f'{self.name}'
+
+        def save(self, *args, **kwargs):
+            if not self.slug:
+                self.slug = slugify(self.name)
+            return super().save(*args, **kwargs)
+
+
 
 class Library 

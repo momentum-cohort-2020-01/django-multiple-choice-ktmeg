@@ -37,7 +37,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,6 +46,7 @@ INSTALLED_APPS = [
     
 
     # Third-party
+    'registration',
     'debug_toolbar',
     'django_extensions',
 
@@ -135,11 +135,10 @@ AUTH_USER_MODEL = 'users.User'
 
 # Debug toolbar config
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-ACCOUNT_ACTIVATION_DAYS = 1
+REGISTRATION_AUTO_LOGIN = TRUE
 
-LOGIN_REDIRECT_URL = '/'
+SIMPLE_BACKEND_REDIRECT_URL = '/'
 
 INTERNAL_IPS = [
     # ...
