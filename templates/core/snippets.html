@@ -2,12 +2,30 @@
 
 {% block content %}
 <body>
+  <script>
+    var clipboard = new ClipboardJS('.btn');
+
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+    </script>
+
   <div class ="snippet-cont">
     {% for snippet in snippets %}
+    <h2>
     {{snippet.title}}
+  </h2>
     {{snippet.description}}
-    {{snippet.code}}
+    <pre>
+<code> class= "lang-{{snippet.language}}"{{snippet.code}} </code>
+<button class="btn" data-clipboard-text="1">Copy</button>
+    </pre>
     {{snippet.language}}
+    {{snippet.created_at}}
   </div>
 
   {% endfor %}

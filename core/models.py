@@ -19,6 +19,14 @@ LANGUAGES = [
 	('C#', 'C#'),
 ]
 
+TAGS = [
+    ('METHOD', 'METHOD'),
+    ('FUNCTION', 'FUNCTION'),
+    ('OPERATOR', 'OPERATOR'),
+    ('HELPER FUNCTION', 'HELPER FUNCTION'),
+
+]
+
 class Snippet(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=250)
@@ -36,17 +44,17 @@ class Snippet(models.Model):
 
 
 class Tag(models.Model): 
-	# name = models.CharField(max_length=100, choices=Tags )
-	# slug = models.CharField(null=False, unique=True)
+    name = models.CharField(max_length=100, choices=TAGS )
+    slug = models.CharField(max_length=100, null=False, unique=True)
 
-    #     def __str__(self):
-    #         return f'{self.name}'
+    def __str__(self):
+        return f'{self.name}'
 
-    #     def save(self, *args, **kwargs):
-    #         if not self.slug:
-    #             self.slug = slugify(self.name)
-    #         return super().save(*args, **kwargs)
-    pass
+        def save(self, *args, **kwargs):
+            if not self.slug:
+                self.slug = slugify(self.name)
+            return super().save(*args, **kwargs)
+    
 
 class Language(models.Model):
     name = models.CharField(max_length=100, choices=LANGUAGES, default = 'english')
