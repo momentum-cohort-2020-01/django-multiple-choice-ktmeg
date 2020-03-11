@@ -35,6 +35,7 @@ class Snippet(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     language = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True, blank=True)
+    tag = models.ForeignKey('Tag', on_delete=models.SET_NULL, null=True, blank=True)
 	
     class Meta:
         ordering = ['-created_at']
@@ -44,8 +45,8 @@ class Snippet(models.Model):
 
 
 class Tag(models.Model): 
-    name = models.CharField(max_length=100, choices=TAGS )
-    slug = models.CharField(max_length=100, null=False, unique=True)
+    name = models.CharField(max_length=100, choices=TAGS, default='code')
+    slug = models.CharField(max_length=100, null=False, unique=True, default='code')
 
     def __str__(self):
         return f'{self.name}'
