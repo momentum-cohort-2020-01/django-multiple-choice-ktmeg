@@ -15,15 +15,22 @@
     </script>
 
   <div class ="snippet-cont">
+
+  <div>
+    <a href="{% url 'add_snippet' %}">add a snippet</a>
+  </div>
     {% for snippet in snippets %}
     <h2>
     {{snippet.title}}
+    <a href="{% url 'edit_snippet' %}">edit snippet</a>
   </h2>
     {{snippet.description}}
-    <pre>
+    {{snippet.language}}
+    {{snippet.code}}
+    <!-- <pre>
 <code> class= "lang-{{snippet.language}}"{{snippet.code}} </code>
 <button class="btn" data-clipboard-text="1">Copy</button>
-    </pre>
+    </pre> -->
     {{snippet.language}}
     {{snippet.created_at}}
   </div>

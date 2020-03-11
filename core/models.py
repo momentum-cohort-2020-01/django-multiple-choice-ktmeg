@@ -34,8 +34,8 @@ class Snippet(models.Model):
     libraries = models.ManyToManyField('Library')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    language = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True, blank=True)
-    tag = models.ForeignKey('Tag', on_delete=models.SET_NULL, null=True, blank=True)
+    language = models.ForeignKey('Language', on_delete=models.CASCADE, related_name="languages")
+    tag = models.ForeignKey('Tag', on_delete=models.CASCADE,related_name="tags", null=True, blank=True)
 	
     class Meta:
         ordering = ['-created_at']
