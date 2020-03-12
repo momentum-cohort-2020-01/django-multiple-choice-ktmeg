@@ -22,10 +22,10 @@
     <div>
       {% if user.is_authenicated %}
       <a href="{% url 'snippets' %}">snippets</a>
-      <a href="/accounts/logout">logout</a>
+      <a class="link" href="/accounts/logout">logout</a>
       {% else %}
-      <a href="/accounts/login">login</a>
-      <a href="/accounts/register">register</a>
+      <a class= "link" href="/accounts/login">login</a>
+      <a class="link" href="/accounts/register">register</a>
       {% endif %}
     </div>
   </header>

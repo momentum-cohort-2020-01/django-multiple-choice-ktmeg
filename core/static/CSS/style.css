@@ -22,48 +22,6 @@ body {
   font-family: 'Khand', sans-serif;
 }
 
-
-a {
-  position: relative;
-  display: inline-block;
-  margin: 15px 25px;
-  outline: none;
-  color:var(--accent-color3);
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 400;
-  text-shadow: 0 0 1px rgba(255,255,255,0.3);
-  font-size: 1.35em;
-}
-a::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: #fff;
-  content: '';
-  -webkit-transition: top 0.3s;
-  -moz-transition: top 0.3s;
-  transition: top 0.3s;
-}
-
-a::after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 2px;
-  height: 2px;
-  background: #fff;
-  content: '';
-  -webkit-transition: height 0.3s;
-  -moz-transition: height 0.3s;
-  transition: height 0.3s;
-}
-
-
-
 .header {
   color: var(--main-title-color);
   background-color: black;
@@ -83,6 +41,52 @@ h2 {
   padding: 1rem;
   margin: 2rem;
   border:5px solid var(--accent-color)
+ 
+}
 
-  
+a{
+  text-decoration: none;
+  color: var(--accent-color3);
+}
+
+.link {
+	position: relative;
+	z-index: 1;
+	display: inline-flex;
+
+	padding-left: 10px;
+	padding-bottom: 5px;
+	padding-right: 10px;
+}
+
+.link::before {
+	content: "";
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(to top,white 25%, rgba(0, 0, 0, 0) 40%);
+
+	position: absolute;
+	left: 0;
+	bottom: 2px;
+	z-index: -1;
+
+	will-change: width;
+	transform: rotate(-2deg);
+	transform-origin: left bottom;
+}
+
+.link:hover::before {
+	width: 0;
+}
+
+/*
+* animation styles
+*/
+
+.link::before {
+	transition: width 0.1s ease-out;
+}
+
+.link:hover::before {
+	transition-duration: 0.15s;
 }

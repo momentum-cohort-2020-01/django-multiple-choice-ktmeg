@@ -13,16 +13,17 @@
         console.log(e);
     });
     </script>
-
-  <div class ="snippet-cont">
-
   <div>
     <a href="{% url 'add_snippet' %}">add a snippet</a>
+  </div>
+
+  <div class ="snippet-cont">
+  <div>
+  
   </div>
     {% for snippet in snippets %}
     <h2>
     {{snippet.title}}
-    <a href="{% url 'edit_snippet' %}">edit snippet</a>
   </h2>
     {{snippet.description}}
     {{snippet.language}}
@@ -33,6 +34,9 @@
     </pre> -->
     {{snippet.language}}
     {{snippet.created_at}}
+    <p>
+    <a href="{% url 'edit_snippet' %}">edit snippet</a>
+    </p>
   </div>
 
   {% endfor %}
