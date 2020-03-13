@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'registration',
     'debug_toolbar',
     'django_extensions',
-    'django_heroku',
+    # 'django_heroku',
 
     # Project-specific
     'users',
