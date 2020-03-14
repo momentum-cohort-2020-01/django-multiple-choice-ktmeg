@@ -34,7 +34,7 @@ def add_snippet(request):
     return render(request, 'core/add_snippet.html', context=context)
 
 @login_required
-def edit_snippet(request, pk):
+def edit_snippet(request):
     user = User.object.get(username=request.user.username)
     snippet = get_object_or_404(Snippet, pk=pk)
     if request.method == 'POST':
@@ -46,6 +46,6 @@ def edit_snippet(request, pk):
         return redirect('snippets')
     else:
         snippet = Snippet.objects.get(pk=pk)
-        form = SnippetForm(instance=habit)
+        form = SnippetForm(instance=snippet)
     context = {'form':form}
     return render(request, 'core/edit_snippet.html', context=context)

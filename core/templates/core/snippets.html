@@ -1,19 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<body>
-  <script>
-    var clipboard = new ClipboardJS('.btn');
-
-    clipboard.on('success', function(e) {
-        console.log(e);
-    });
-
-    clipboard.on('error', function(e) {
-        console.log(e);
-    });
-    </script>
-  <div>
     <a href="{% url 'add_snippet' %}">add a snippet</a>
   </div>
 
@@ -28,10 +15,10 @@
     {{snippet.description}}
     {{snippet.language}}
     {{snippet.code}}
-    <!-- <pre>
+    <pre>
 <code> class= "lang-{{snippet.language}}"{{snippet.code}} </code>
 <button class="btn" data-clipboard-text="1">Copy</button>
-    </pre> -->
+    </pre>
     {{snippet.language}}
     {{snippet.created_at}}
     <p>

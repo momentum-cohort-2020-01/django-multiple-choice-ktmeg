@@ -3,17 +3,23 @@
 
 
 function q (selector) {
-  return.document.querySelector(selector)
+  return document.querySelector(selector)
 }
 
 function main () {
-  newSnip()
+new ClipboardJS('.btn');
+const button = q('btn.copy')
+button.addEventListener('click', copyEvent)
 }
 
-function newSnip () {
-  fetch('/snippets/')
-  .then(res => res.json())
-  .then(json => {
+// function copy (event) {
+//   newSnip()
+// }
 
-  }) 
-}
+// function newSnip () {
+//   fetch('/snippets/')
+//   .then(res => res.json())
+//   .then(json => {
+
+//   }) 
+// }

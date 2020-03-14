@@ -29,6 +29,7 @@ body {
   border: 10px solid var(--accent-color);
   font-family: 'Bungee Inline', cursive;
   font-size: 2.8rem;
+  padding: 1.5rem;
 }
 
 
@@ -51,7 +52,7 @@ a{
 
 .link {
 	position: relative;
-	z-index: 1;
+	z-index:2;
 	display: inline-flex;
 
 	padding-left: 10px;
@@ -63,16 +64,16 @@ a{
 	content: "";
 	width: 100%;
 	height: 100%;
-	background-image: linear-gradient(to top,white 25%, rgba(0, 0, 0, 0) 40%);
+	background-image: linear-gradient(to top,white 10%, rgba(0, 0, 0, 0) 10%);
 
 	position: absolute;
 	left: 0;
 	bottom: 2px;
-	z-index: -1;
+	z-index: -2;
 
 	will-change: width;
-	transform: rotate(-2deg);
-	transform-origin: left bottom;
+	transform: rotate(-4deg);
+	transform-origin: center;
 }
 
 .link:hover::before {
@@ -84,7 +85,7 @@ a{
 */
 
 .link::before {
-	transition: width 0.1s ease-out;
+	transition: width 0.1s ease-in-out;
 }
 
 .link:hover::before {

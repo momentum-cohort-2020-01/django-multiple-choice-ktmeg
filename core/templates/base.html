@@ -9,17 +9,16 @@
   <link rel="stylesheet" href="{% static 'CSS/prism.css' %}"/>
   <script src="{% static 'js/prism.js' %}"defer></script>
   <script src="{% static 'js/snips.js' %}"defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"defer></script>
 
-  <!-- <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js">defer</script> -->
   {% block title %}<title>Clippy Snips</title>{% endblock %}
 </head>
 <body>
-    
   <header class="header">
     <h1>
       Clippy Snips: Code Keeper
     </h1>
-    <div>
+      <div>
       {% if user.is_authenicated %}
       <a href="{% url 'snippets' %}">snippets</a>
       <a class="link" href="/accounts/logout">logout</a>
