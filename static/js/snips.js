@@ -1,15 +1,15 @@
 
 /* globals fetch */
-
+console.log('run')
 
 function q (selector) {
   return document.querySelector(selector)
 }
 
 function main () {
-new ClipboardJS('.btn');
-const button = q('btn.copy')
-button.addEventListener('click', copyEvent)
+  new ClipboardJS('.btn')
+  const button = q('btn.copy')
+  button.addEventListener('click', copyEvent)
 }
 
 // function copy (event) {
@@ -23,3 +23,5 @@ button.addEventListener('click', copyEvent)
 
 //   }) 
 // }
+
+main()

@@ -2,13 +2,13 @@
 
 {% block content %}
 <body>
-<div class="form-layout">
-<h2>Edit {{snippet.title}}</h2>
-<form class="form-page" action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value='Submit'>
-</form>
-</div>
+  <div>
+    <h2>edit a code block:</h2>
+      <form action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value='Submit'>
+      </form>
+  </div>
 </body>
 {% endblock %}
