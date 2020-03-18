@@ -16,14 +16,15 @@
 <body>
   <header class="header">
     <h1>
-      Clippy Snips: Code Keeper
+      <a class="main-title" href="{% url 'snippets' %}">Clippy Snips: Code Keeper</a>
     </h1>
       <div>
-      {% if user.is_authenicated %}
-      <a href="{% url 'snippets' %}">snippets</a>
-      <a class="link" href="/accounts/logout">logout</a>
+      {% if user.is_authenticated %}
+      <a class= "link" href="{% url 'snippets' %}">snippets</a>
+      <a class ="link" href="{% url 'add_snippet' %}">add a snippet</a>
+      <a class="link logout" href="/accounts/logout">logout</a>
       {% else %}
-      <a class= "link" href="/accounts/login">login</a>
+      <a class="link" href="/accounts/login">login</a>
       <a class="link" href="/accounts/register">register</a>
       {% endif %}
     </div>

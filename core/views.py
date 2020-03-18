@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 
 from .models import Snippet, Tag, Library, Language
 from .forms import SnippetForm
@@ -16,8 +17,9 @@ def snippets(request):
 @login_required(login_url='/accounts/login')
 def snippet_details(request, pk):
     user = User.objects.get(username=request.user.username)
+    snippets = Snippet.objects.all()
     snippet = Snippet.objects.get(pk=pk)
-    context = {'snippet': snippet, 'pk':pk}
+    context = {'snippet': snippet, 'pk': pk}
     return render(request, 'core/snippet_details.html', context=context )
 
 @login_required(login_url='/accounts/login')
@@ -27,26 +29,26 @@ def add_snippet(request):
         language = request.POST.get('language')
         form.fields['language'].choices = [(language, language)]
         if form.is_valid():
-            snippet = form.save(commit=False)
-            snippet.save()
-        return redirect('snippets')
+            snippet = form.save
+            return redirect('snippets')
     else:
         form = SnippetForm()
-    context = {'form': form}
+    context = {'form': form, 'snippets': snippets}
     return render(request, 'core/add_snippet.html', context=context)
 
 @login_required(login_url='/accounts/login')
 def edit_snippet(request, pk):
     user = User.objects.get(username=request.user.username)
+    snippets = Snippet.objects.all()
     snippet = get_object_or_404(Snippet, pk=pk)
     if request.method == 'POST':
         form = SnippetForm(request.POST, instance=snippet)
         if form.is_valid():
             snippet = form.save()
-            form.save()
-        return redirect('snippet_details', pk)
+            # form.save()
+        return redirect('snippets')
     else:
-        snippet = Snippet.objects.get(pk=pk)
+        # snippet = Snippet.objects.get(pk=pk)
         form = SnippetForm(instance=snippet)
-    context = {'form':form, 'snippet': snippet}
-    return render(request, 'core/snippet_details.html', context=context)
+    context = {'form':form, 'snippets': snippets}
+    return render(request, 'core/edit_snippet.html', context=context)

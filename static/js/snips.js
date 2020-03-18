@@ -9,7 +9,10 @@ function q (selector) {
 function main () {
   new ClipboardJS('.btn')
   const button = q('btn.copy')
-  button.addEventListener('click', copyEvent)
+  button.addEventListener('click', function (e) {
+    e.preventDefault()
+  })
+
 }
 
 // function copy (event) {
@@ -24,4 +27,4 @@ function main () {
 //   }) 
 // }
 
-main()
+window.addEventListener('DOMContentLoaded', main())

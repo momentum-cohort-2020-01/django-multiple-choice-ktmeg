@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.text import slugify
 from users.models import User
 
+
 LANGUAGES = [
 	('CSS', 'CSS'),
 	('HTML', 'HTML'),
