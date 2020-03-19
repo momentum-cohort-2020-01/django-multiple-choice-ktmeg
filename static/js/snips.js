@@ -26,11 +26,11 @@ function main () {
     })
   }
 }
-function copy() {
-  main()
-}
-console.log('test')
-document.addEventListener('DOMContentLoaded', copy())
+// function copy() {
+//   main()
+// }
+// console.log('test')
+// document.addEventListener('DOMContentLoaded', copy())
 
 console.log('complete')
 // function copy (event) {
@@ -45,4 +45,6 @@ console.log('complete')
 //   }) 
 // }
 
-window.addEventListener('DOMContentLoaded', main())
+window.addEventListener('DOMContentLoaded', function () {
+  main()
+})
