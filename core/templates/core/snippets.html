@@ -1,26 +1,25 @@
 {% extends 'base.html' %}
 <body>
 {% block content %}
-
+{% for snippet in snippets %}
   <div class ="snippet-cont">
-    {% for snippet in snippets %}
     <h2>
       {{snippet.title}}
     </h2>
       {{snippet.description}}   
 <div class=code-snip> 
 <pre>
-<code id="code-block"> class= "lang-{{snippet.language}}"{{snippet.code}} </code>
-<button class="btn" data-clipboard-text={{snippet.code}} >Copy</button>
+<code id="code-block"> class= "lang-{{snippet.language}}">{{snippet.code}} </code>
 </pre>
+<button type="button" class="clipboard" onclick"return alert('Copied')>Copy to Clipboard</button>
 </div>  
     {{snippet.created_at}}
     <p>
       <a class="link edit" href="{% url 'edit_snippet' snippet.id %}">edit snippet</a>
     </p>
   </div>
-
   {% endfor %}
+  
 </body>
 
 

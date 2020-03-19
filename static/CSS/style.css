@@ -46,7 +46,9 @@ h2 {
 
 .snippet-cont {
   padding: 1rem;
-  margin: 2rem;
+  margin-bottom: 1.5rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
   border:5px solid var(--accent-color);
   color:var(--main-text-color);
  

@@ -12,20 +12,24 @@ function main () {
     button.addEventListener('click', function (e) {
     // e.preventDefault()
       const parent = e.target.closest('.code-snip')
-      const snippet = parent.q('code')
+      const snippet = parent.querySelector('code')
       const range = document.createRange()
       range.selectNode(snippet)
       window.getSelection().removeAllRanges()
       window.getSelection().addRange(range)
       try {
         const successful = document.execCommand('copy')
-        const msg = successful ? 'successful' : 'unsuccessful' 
+        const msg = successful ? 'successful' : 'unsuccessful'
       } catch (err) {
         console.log('Cannot copy snippet!')
       } window.getSelection().removeAllRanges()
     })
   }
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  main()
+})
 // function copy() {
 //   main()
 // }
@@ -45,6 +49,3 @@ console.log('complete')
 //   }) 
 // }
 
-window.addEventListener('DOMContentLoaded', function () {
-  main()
-})
