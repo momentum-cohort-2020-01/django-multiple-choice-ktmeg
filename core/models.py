@@ -59,8 +59,8 @@ class Tag(models.Model):
     
 
 class Language(models.Model):
-    name = models.CharField(max_length=100, choices=LANGUAGES, default = 'english')
-    slug = models.CharField(max_length=50, null=False, unique=True, default=name)
+    name = models.CharField(max_length=100, choices=LANGUAGES)
+    slug = models.SlugField(null=False, unique=True)
 
     def __str__(self):
         return f'{self.name}'

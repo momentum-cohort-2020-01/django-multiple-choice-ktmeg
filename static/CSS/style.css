@@ -21,7 +21,6 @@ body {
   margin: 3rem;
   font-family: 'Khand', sans-serif;
   height: 100%;
-  overflow: hidden;
 
 }
 
@@ -124,11 +123,12 @@ a{
   font-size: 2rem;
   color: var(--main-title-color);
   margin: auto;
+  margin-top: 3rem;
 }
 
 .footer-link{
   color: var(--accent-color3);
-  margin: 1rem;
+  margin: 1.5rem;
 }
 
 .footer-link:hover{

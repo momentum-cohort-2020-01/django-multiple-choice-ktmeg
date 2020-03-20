@@ -24,6 +24,7 @@ def snippet_details(request, pk):
 
 @login_required(login_url='/accounts/login')
 def add_snippet(request):
+    snippets = Snippet.objects.all()
     if request.method == 'POST':
         form = SnippetForm(request.POST)
         language = request.POST.get('language')
