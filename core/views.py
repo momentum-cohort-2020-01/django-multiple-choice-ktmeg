@@ -52,3 +52,9 @@ def edit_snippet(request, pk):
         form = SnippetForm(instance=snippet)
     context = {'form':form, 'snippets': snippets}
     return render(request, 'core/edit_snippet.html', context=context)
+
+@login_required(login_url='/accounts/login')
+def snip_category(request, slug):
+    Language = Language.objects.get(slug-slug)
+    snip_category = Snippet.objects.filter(language=language)
+    return render(request, 'core/snip_category.html', {'snippets': snip_category, 'language': language})

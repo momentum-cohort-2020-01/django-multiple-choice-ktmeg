@@ -14,7 +14,7 @@
   {% block title %}<title>Clippy Snips</title>{% endblock %}
 </head>
 <body>
-  <header class="header">
+  <header class="header header-wrapper">
     <h1>
       <a class="main-title" href="{% url 'snippets' %}">Clippy Snips: Code Keeper</a>
     </h1>
@@ -28,9 +28,29 @@
       <a class="link" href="/accounts/register">register</a>
       {% endif %}
     </div>
+    <div>
+    <!-- add search here -->
+    </div>
   </header>
+
   {% block content %}
   {% endblock %}
-  
+  <div class="footer">
+    <p> Search by Language: </p>
+    <a class ="footer-link" href ='/snippets/CSS/'> CSS </a>
+    <a class ="footer-link" href ='/snippets/HTML/'> HTML </a>
+    <a class ="footer-link" href ='/snippets/JSON/'> JSON </a>
+    <a class ="footer-link" href ='/snippets/AJAX/'> AJAX</a>
+    <a class ="footer-link" href ='/snippets/JAVASCRIPT/'> JavaScript </a>
+    <a class ="footer-link" href ='/snippets/Python/'> Python </a>
+    <a class ="footer-link" href ='/snippets/Django/'> Django </a>
+    <a class ="footer-link" href ='/snippets/Java/'> Java </a>
+    <a class ="footer-link" href ='/snippets/React/'> React </a>
+    <a class ="footer-link" href ='/snippets/Ruby/'> Ruby </a>
+    <a class ="footer-link" href ='/snippets/.NET/'> .Net </a>
+    <a class ="footer-link" href ='/snippets/C/'> C </a>
+    <a class ="footer-link" href ='/snippets/C#/'> C# </a>
+  </div>
+
 </body>
 </html>

@@ -26,6 +26,7 @@ urlpatterns = [
     path('add-snippet/', views.add_snippet, name='add_snippet'),
     path('snippets/<int:pk>', views.snippet_details, name='snippet_details'),
     path('edit-snippet/<int:pk>', views.edit_snippet, name='edit_snippet'),
+    path('snippets/<slug:slug>', views.snip_category, name = "snip_category"),
     
 ]
 
